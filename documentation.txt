@@ -1,0 +1,16 @@
+Installtion Guide:
+
+RabbitMQ Setup:
+-install erlang for windows(it is required for running rabbitmq on windows)
+-install rabbitmq installer for windows
+-Run rabbitmq server using the "rabbitmq-server.exe" which will be located in the path-to-rabbitmq/bin folder.
+-visit http://localhost:15672/ and login using default credential of username = guest and password = guest 
+-You will be logged in into the rabbitmq managment portal
+
+
+Django Api Setup:
+-Create python virtual environment using venv using command "python -m venv my_env"
+-Active virtual env 
+-Install all the dependencies using "pip install -r requirements.txt"
+-Run the following command "python consumer.py" to run the pica consumer that will listen for the messages in the Queue.
+-Run django server using "python manage.py runserver"
