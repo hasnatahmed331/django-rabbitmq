@@ -55,7 +55,6 @@ class BackupManager:
             if not os.path.exists(db_path):
                 os.makedirs(db_path)
 
-      
             with connections["default"].cursor() as cursor:
                 with open(os.path.join(db_path, "backup.sql"), "w") as f:
                     for line in connections["default"].connection.iterdump():
