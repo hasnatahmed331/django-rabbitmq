@@ -1,6 +1,24 @@
 from django.db import models
-
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 import datetime
+from datetime import date
+
+
+def validate_age(value):
+    """
+    Validates that the age calculated from the date of birth is greater than 18.
+
+    Args:
+        value (date): The date of birth to validate.
+    """
+    today = date.today()
+    age = (
+        today.year - value.year - ((today.month, today.day) < (value.month, value.day))
+    )
+
+    if age < 18:
+        raise ValidationError(_("Age must be greater than 18 years."))
 
 
 class Student(models.Model):
@@ -17,7 +35,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=100, null=False)
     last_name = models.CharField(max_length=100, null=False)
     email = models.EmailField(unique=True, null=False)
-    date_of_birth = models.DateField(null=False)
+    date_of_birth = models.DateField(null=False, validators=[validate_age])
 
     def __str__(self):
         """
