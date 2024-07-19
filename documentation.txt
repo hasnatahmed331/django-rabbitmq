@@ -7,6 +7,15 @@ RabbitMQ Setup:
 -visit http://localhost:15672/ and login using default credential of username = guest and password = guest 
 -You will be logged in into the rabbitmq managment portal
 
+Email Sending Feature Setup:
+-Set the App passwrods for your google gmail account
+-Create .evn file and set the following variables
+  EMAIL_HOST_USER = 'your_email'
+  EMAIL_HOST_PASSWORD = 'your_app_password'
+
+
+
+
 
 Django Api Setup:
 -Create python virtual environment using venv using command "python -m venv my_env"
@@ -87,7 +96,7 @@ Response:
 
 ############
 
-API Endpoint- localhost:8000/students/1/update/
+API Endpoint- localhost:8000/students/update/1
 
 Method: PUT
 
@@ -116,18 +125,169 @@ Response:
 ############
 
 
-API Endpoint- localhost:8000/students/1/delete/
+API Endpoint- localhost:8000/students/delete/1
 
 Method: DELETE
 
 Description: Deletes an existing student.
 
+Status Code: 204 (No Content)
+
+
+
+
+
+##########
+
+
+API Endpoint- localhost:8000/students/courses/
+
+Method: GET
+
+Description: Returns a list of courses.
+
+Response:
+
+[
+  {
+    "id": 1,
+    "name": "Math",
+    "code": "MATH101"
+  },
+  ...
+]
+
+
+##########
+
+
+API Endpoint- localhost:8000/students/courses/1/
+
+Method: GET
+
+Description: Returns a single course.
+
 Response:
 
 {
   "id": 1,
-  "first_name": "Jane",
-  "last_name": "Doe",
-  "email": "jane.doe@example.com",
-  "date_of_birth": "2001-01-01"
+  "name": "Math",
+  "code": "MATH101"
 }
+
+
+########
+
+
+
+API Endpoint- localhost:8000/students/courses/create/
+
+Method: POST
+
+Description: Creates a new course.
+
+Request Body:
+
+{
+  "title": "Science",
+  "description": "Introduction to Science",
+  "start_date": "2022-01-01",
+  "end_date": "2022-12-31"
+}
+
+Response:
+
+{
+  "id": 1,
+  "title": "Science",
+  "description": "Introduction to Science",
+  "start_date": "2022-01-01",
+  "end_date": "2022-12-31"
+}
+
+###########
+
+
+API Endpoint- localhost:8000/students/courses/update/1
+
+Method: PUT
+
+Description: Updates an existing course.
+
+Request Body:
+
+{
+  "title": "Science",
+  "description": "Introduction to Science",
+  "start_date": "2022-01-01",
+  "end_date": "2022-12-31"
+}
+
+Response:
+
+{
+  "id": 1,
+  "title": "Science",
+  "description": "Introduction to Science",
+  "start_date": "2022-01-01",
+  "end_date": "2022-12-31"
+}
+
+
+##########
+
+
+API Endpoint- localhost:8000/students/courses/delete/1
+
+Method: DELETE
+
+Description: Deletes an existing course.
+
+Status Code: 204 (No Content)
+
+
+##########
+
+API Endpoint- localhost:8000/students/enroll/
+
+Method: POST
+
+Description: Enrolls a student in a course.
+
+Request Body:
+
+{
+  "student_id": 1,
+  "course_id": 1
+}
+
+
+Response:
+
+{
+    "id": 2,
+    "enrollment_date": "2024-07-19",
+    "student": 23,
+    "course": 1
+}
+
+#########
+
+
+API Endpoint- localhost:8000/students/enrollments/
+
+Method: GET
+
+Description: Returns a list of enrollments.
+
+Response:
+
+[
+  {
+    "id": 1,
+    "enrollment_date": "2024-07-19",
+    "student": 23,
+    "course": 1
+  },
+  ...
+]

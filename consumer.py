@@ -36,8 +36,8 @@ def send_welcome_email(email):
     send_mail(
         "Welcome Email",
         "Welcome To your School",
-        "hasnatahmed331@gmail.com",
-        ["hasnatahmed331@gmail.com"],
+        os.environ["EMAIL_HOST_USER"],
+        [email],
         fail_silently=False,
     )
 

@@ -60,4 +60,4 @@ class BackupManager:
                     for line in connections["default"].connection.iterdump():
                         f.write(f"{line}\n")
 
-            time.sleep(10)  # Backup every hour
+            time.sleep(3600)  # Backup every hour
