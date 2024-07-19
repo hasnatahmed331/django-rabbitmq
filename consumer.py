@@ -1,5 +1,11 @@
 import pika
 import json
+import django
+from django.core.mail import send_mail
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "enrollement.settings")
+django.setup()
 
 
 def process_message(ch, method, properties, body):
@@ -27,8 +33,13 @@ def send_welcome_email(email):
     Args:
         email (str): The email address to send the welcome email to.
     """
-    # Print a message indicating the email is being sent.
-    print(f"Sending welcome email to ({email})")
+    send_mail(
+        "Welcome Email",
+        "Welcome To your School",
+        "hasnatahmed331@gmail.com",
+        ["hasnatahmed331@gmail.com"],
+        fail_silently=False,
+    )
 
 
 def start_consumer():

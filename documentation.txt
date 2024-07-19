@@ -14,3 +14,120 @@ Django Api Setup:
 -Install all the dependencies using "pip install -r requirements.txt"
 -Run the following command "python consumer.py" to run the pica consumer that will listen for the messages in the Queue.
 -Run django server using "python manage.py runserver"
+
+
+
+
+API Endpoints Documentation:
+
+API Endpoint- localhost:8000/students/
+
+Method: GET
+
+Description: Returns a list of students.
+
+Response:
+
+[
+  {
+    "id": 1,
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe@example.com",
+    "date_of_birth": "2000-01-01"
+  },
+  ...
+]
+
+###########
+
+API Endpoint- localhost:8000/students/1/
+
+Method: GET
+
+Description: Returns a single student.
+
+Response:
+
+{
+  "id": 1,
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "date_of_birth": "2000-01-01"
+}
+
+########
+
+API Endpoint- localhost:8000/students/create/
+
+Method: POST
+
+Description: Creates a new student.
+
+Request Body:
+
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "date_of_birth": "2000-01-01"
+}
+
+Response:
+
+{
+  "id": 1,
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "john.doe@example.com",
+  "date_of_birth": "2000-01-01"
+}
+
+
+############
+
+API Endpoint- localhost:8000/students/1/update/
+
+Method: PUT
+
+Description: Updates an existing student.
+
+Request Body:
+
+{
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "jane.doe@example.com",
+  "date_of_birth": "2001-01-01"
+}
+
+Response:
+
+{
+  "id": 1,
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "jane.doe@example.com",
+  "date_of_birth": "2001-01-01"
+}
+
+
+############
+
+
+API Endpoint- localhost:8000/students/1/delete/
+
+Method: DELETE
+
+Description: Deletes an existing student.
+
+Response:
+
+{
+  "id": 1,
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "jane.doe@example.com",
+  "date_of_birth": "2001-01-01"
+}
